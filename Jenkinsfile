@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -10,10 +9,11 @@ pipeline {
     stages {
 
         stage('Checkout') {
-            steps {
+           steps {
                 git branch: 'main', url:'https://github.com/keerthanabmkeerthi14/harrypottermaven.git',
                 credentialsId: 'github-token'
             }
+
         }
 
         stage('Build') {
@@ -32,13 +32,32 @@ pipeline {
             steps {
                 sh 'mvn package'
             }
-        
-        
         }
+
         stage('Run Application') {
             steps {
                 sh 'mvn exec:java -Dexec.mainClass="com.example.app.App"'
             }
+        }
+    }
+
+    
+    post {
+
+        success {
+            emailext (
+                subject: "SUCCESS: ${JOB_NAME} #${BUILD_NUMBER}",
+                body: "Build succeeded!\nCheck: ${BUILD_URL}",
+                to: "keerthanabmkeerthi14@github.com"
+            )
+        }
+
+        failure {
+            emailext (
+                subject: "FAILED: ${JOB_NAME} #${BUILD_NUMBER}",
+                body: "Build failed!\nCheck: ${BUILD_URL}",
+                to: "keerthanabmkeerthi14@github.com"
+            )
         }
     }
 }
