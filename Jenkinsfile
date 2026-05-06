@@ -11,7 +11,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', url:'https://github.com/Ganavi02M/DevopsLAb6-maven.git',
+                git branch: 'main', url:'https://github.com/keerthanabmkeerthi14/harrypottermaven.git',
                 credentialsId: 'github-token'
             }
         }
