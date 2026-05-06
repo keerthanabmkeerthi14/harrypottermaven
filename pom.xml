@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example.app</groupId>
-  <artifactId>demo-app569</artifactId>
+  <artifactId>demo-app</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>demo-app569</name>
+  <name>demo-app</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -39,7 +39,7 @@
 
   </dependencies>
 <build>
-<plugins>
+    <plugins>
 
         <!-- Compiler Plugin -->
         <plugin>
@@ -52,6 +52,14 @@
             </configuration>
         </plugin>
 
+    
+    
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.1.0</version>
+        </plugin>
+    
         <!-- Test Plugin -->
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
